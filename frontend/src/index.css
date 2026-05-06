@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+:root {
+  --bg:         #0a0a0b;
+  --bg-2:       #111113;
+  --bg-3:       #18181c;
+  --border:     #2a2a30;
+  --border-2:   #3a3a42;
+  --text:       #e8e8f0;
+  --text-2:     #9090a8;
+  --text-3:     #5a5a72;
+  --p0:         #ff3b3b;
+  --p0-bg:      #1a0808;
+  --p0-border:  #3d1010;
+  --p1:         #ff8c00;
+  --p1-bg:      #1a1000;
+  --p1-border:  #3d2800;
+  --p2:         #f5c400;
+  --p2-bg:      #1a1600;
+  --p2-border:  #3d3400;
+  --green:      #00d084;
+  --green-bg:   #001a0e;
+  --blue:       #4a9eff;
+  --font-display: 'Syne', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --radius:     4px;
+  --radius-lg:  8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 2px; }
+
+button { font-family: var(--font-mono); cursor: pointer; border: none; outline: none; }
+
+input, textarea, select {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input:focus, textarea:focus, select:focus { border-color: var(--blue); }
+textarea { resize: vertical; min-height: 80px; }
+select option { background: var(--bg-3); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+
+.animate-in { animation: fadeIn 0.2s ease forwards; }
